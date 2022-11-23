@@ -1,0 +1,17 @@
+C:\Projects\Graficzne3\Graficzne3\bin\Debug\net6.0-windows\Graficzne3.exe
+C:\Projects\Graficzne3\Graficzne3\bin\Debug\net6.0-windows\Graficzne3.deps.json
+C:\Projects\Graficzne3\Graficzne3\bin\Debug\net6.0-windows\Graficzne3.runtimeconfig.json
+C:\Projects\Graficzne3\Graficzne3\bin\Debug\net6.0-windows\Graficzne3.dll
+C:\Projects\Graficzne3\Graficzne3\bin\Debug\net6.0-windows\Graficzne3.pdb
+C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\Graficzne3.csproj.AssemblyReference.cache
+C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\Graficzne3.Form1.resources
+C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\Graficzne3.csproj.GenerateResource.cache
+C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\Graficzne3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\Graficzne3.AssemblyInfoInputs.cache
+C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\Graficzne3.AssemblyInfo.cs
+C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\Graficzne3.csproj.CoreCompileInputs.cache
+C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\Graficzne3.dll
+C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\refint\Graficzne3.dll
+C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\Graficzne3.pdb
+C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\Graficzne3.genruntimeconfig.cache
+C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\ref\Graficzne3.dll

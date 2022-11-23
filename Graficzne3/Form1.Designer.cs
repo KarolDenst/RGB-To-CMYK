@@ -28,12 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.bezierCanvas = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.bezierCanvas)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // bezierCanvas
+            // 
+            this.bezierCanvas.Location = new System.Drawing.Point(0, 0);
+            this.bezierCanvas.Name = "bezierCanvas";
+            this.bezierCanvas.Size = new System.Drawing.Size(596, 448);
+            this.bezierCanvas.TabIndex = 0;
+            this.bezierCanvas.TabStop = false;
+            this.bezierCanvas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.bezierCanvas_MouseClick);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bezierCanvas);
+            this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.bezierCanvas)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private PictureBox bezierCanvas;
     }
 }
