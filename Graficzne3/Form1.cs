@@ -46,7 +46,7 @@ namespace Graficzne3
             cyanBitmap = new DirectBitmap(cyanPictureBox.Width, cyanPictureBox.Height);
             magentaBitmap = new DirectBitmap(magentaPictureBox.Width, magentaPictureBox.Height);
             yellowBitmap = new DirectBitmap(yellowPictureBox.Width, yellowPictureBox.Height);
-            blackBitmap = new DirectBitmap(blackPictureBox.Width, blackPictureBox.Height);
+            blackBitmap = new DirectBitmap(blackPictureBox.Width, blackPictureBox.Height);`
         }
 
         private void DrawBezierCurves()
