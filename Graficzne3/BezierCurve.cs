@@ -10,18 +10,27 @@ namespace Graficzne3
     {
         public List<Point> Points;
         public Color Color;
+        public static int Padding = 5;
 
-        public BezierCurve(Color color)
+        public BezierCurve(Color color, int height)
         {
-            Points = new List<Point>();
-            Points.Add(new Point(0, 0));
+            Points = new List<Point>
+            {
+                new Point(Padding, height - Padding)
+            };
 
             Color = color;
         }
 
-        public void AddPoint(Point p)
+        public void AddPoint(Point p, int width)
         {
             if (Points.Count >= 4) return;
+            if (Points.Count == 3)
+            {
+                Point newPoint= new Point(width - Padding, p.Y);
+                Points.Add(newPoint);
+                return;
+            }
             Points.Add(p);
         }
 

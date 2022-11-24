@@ -9,5 +9,6 @@ namespace Graficzne3
     internal static class Constants
     {
         public static int NumberOfPoints = 4;
+        public static Color CanvasBackground = Color.Gray;
     }
 }

@@ -20,23 +20,23 @@ namespace Graficzne3
             Bitmap bitmap = new Bitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
             bezierCanvas.Image = bitmap;
             graphics = Graphics.FromImage(bitmap);
-            graphics.Clear(Color.White);
+            graphics.Clear(Constants.CanvasBackground);
         }
 
         private void SetUpBezierCurves()
         {
             bezierCurves = new Dictionary<CMYK, BezierCurve>
             {
-                { CMYK.Cyan, new BezierCurve(Color.Cyan) },
-                { CMYK.Magenta, new BezierCurve(Color.Magenta) },
-                { CMYK.Yellow, new BezierCurve(Color.Yellow) },
-                { CMYK.Black, new BezierCurve(Color.Black) }
+                { CMYK.Cyan, new BezierCurve(Color.Cyan, bezierCanvas.Height) },
+                { CMYK.Magenta, new BezierCurve(Color.Magenta, bezierCanvas.Height) },
+                { CMYK.Yellow, new BezierCurve(Color.Yellow, bezierCanvas.Height) },
+                { CMYK.Black, new BezierCurve(Color.Black, bezierCanvas.Height) }
             };
         }
 
         private void DrawBezierCurves()
         {
-            graphics.Clear(Color.White);
+            graphics.Clear(Constants.CanvasBackground);
 
             if (showAllCheckBox.Checked) DrawAllBezierCurves();
             else bezierCurves[GetSelectedColor()].Draw(graphics);
@@ -46,7 +46,7 @@ namespace Graficzne3
 
         private void DrawAllBezierCurves()
         {
-            graphics.Clear(Color.White);
+            graphics.Clear(Constants.CanvasBackground);
             
             foreach(var curve in bezierCurves.Values)
             {
@@ -58,7 +58,7 @@ namespace Graficzne3
 
         private void bezierCanvas_MouseClick(object sender, MouseEventArgs e)
         {
-            bezierCurves[GetSelectedColor()].AddPoint(e.Location);
+            bezierCurves[GetSelectedColor()].AddPoint(e.Location, bezierCanvas.Width);
             DrawBezierCurves();
         }
 
