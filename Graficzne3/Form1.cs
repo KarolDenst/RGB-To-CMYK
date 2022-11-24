@@ -7,12 +7,18 @@ namespace Graficzne3
     {
         private Dictionary<CMYK, BezierCurve> bezierCurves;
         private Graphics graphics;
+        private DirectBitmap mainBitmap;
+        private DirectBitmap cyanBitmap;
+        private DirectBitmap magentaBitmap;
+        private DirectBitmap yellowBitmap;
+        private DirectBitmap blackBitmap;
 
         public Form1()
         {
             InitializeComponent();
             SetUpBezierCanvas();
             SetUpBezierCurves();
+            SetUpBitmaps();
         }
 
         private void SetUpBezierCanvas()
@@ -32,6 +38,15 @@ namespace Graficzne3
                 { CMYK.Yellow, new BezierCurve(Color.Yellow, bezierCanvas.Height) },
                 { CMYK.Black, new BezierCurve(Color.Black, bezierCanvas.Height) }
             };
+        }
+
+        private void SetUpBitmaps()
+        {
+            mainBitmap = new DirectBitmap(mainPictureBox.Width, mainPictureBox.Height);
+            cyanBitmap = new DirectBitmap(cyanPictureBox.Width, cyanPictureBox.Height);
+            magentaBitmap = new DirectBitmap(magentaPictureBox.Width, magentaPictureBox.Height);
+            yellowBitmap = new DirectBitmap(yellowPictureBox.Width, yellowPictureBox.Height);
+            blackBitmap = new DirectBitmap(blackPictureBox.Width, blackPictureBox.Height);
         }
 
         private void DrawBezierCurves()
