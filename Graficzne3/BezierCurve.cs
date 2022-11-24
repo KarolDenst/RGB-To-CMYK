@@ -21,6 +21,7 @@ namespace Graficzne3
 
         public void AddPoint(Point p)
         {
+            if (Points.Count >= 4) return;
             Points.Add(p);
         }
 

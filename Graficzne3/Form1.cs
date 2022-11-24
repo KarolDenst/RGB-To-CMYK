@@ -25,24 +25,61 @@ namespace Graficzne3
 
         private void SetUpBezierCurves()
         {
-            bezierCurves = new Dictionary<CMYK, BezierCurve>();
-            bezierCurves.Add(CMYK.Cyan, new BezierCurve(Color.Cyan));
-            bezierCurves.Add(CMYK.Magenta, new BezierCurve(Color.Magenta));
-            bezierCurves.Add(CMYK.Yellow, new BezierCurve(Color.Yellow));
-            bezierCurves.Add(CMYK.Black, new BezierCurve(Color.Black));
+            bezierCurves = new Dictionary<CMYK, BezierCurve>
+            {
+                { CMYK.Cyan, new BezierCurve(Color.Cyan) },
+                { CMYK.Magenta, new BezierCurve(Color.Magenta) },
+                { CMYK.Yellow, new BezierCurve(Color.Yellow) },
+                { CMYK.Black, new BezierCurve(Color.Black) }
+            };
         }
 
         private void DrawBezierCurves()
         {
             graphics.Clear(Color.White);
-            bezierCurves[CMYK.Black].Draw(graphics);
+
+            if (showAllCheckBox.Checked) DrawAllBezierCurves();
+            else bezierCurves[GetSelectedColor()].Draw(graphics);
+
+            bezierCanvas.Refresh();
+        }
+
+        private void DrawAllBezierCurves()
+        {
+            graphics.Clear(Color.White);
+            
+            foreach(var curve in bezierCurves.Values)
+            {
+                curve.Draw(graphics);
+            }
+
             bezierCanvas.Refresh();
         }
 
         private void bezierCanvas_MouseClick(object sender, MouseEventArgs e)
         {
-            bezierCurves[CMYK.Black].AddPoint(e.Location);
+            bezierCurves[GetSelectedColor()].AddPoint(e.Location);
             DrawBezierCurves();
         }
+
+        private CMYK GetSelectedColor()
+        {
+            if (cyanRadioButton.Checked) return CMYK.Cyan;
+            if (magentaRadioButton.Checked) return CMYK.Magenta;
+            if (yellowRadioButton.Checked) return CMYK.Yellow;
+            if (blackRadioButton.Checked) return CMYK.Black;
+
+            return CMYK.Black;
+        }
+
+        private void cyanRadioButton_CheckedChanged(object sender, EventArgs e) => DrawBezierCurves();
+
+        private void magentaRadioButton_CheckedChanged(object sender, EventArgs e) => DrawBezierCurves();
+
+        private void yellowRadioButton_CheckedChanged(object sender, EventArgs e) => DrawBezierCurves();
+
+        private void blackRadioButton_CheckedChanged(object sender, EventArgs e) => DrawBezierCurves();
+
+        private void showAllCheckBox_CheckedChanged(object sender, EventArgs e) => DrawBezierCurves();
     }
 }
