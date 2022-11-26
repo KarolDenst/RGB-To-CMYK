@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Graficzne3
 {
-    internal enum CMYK
-    {
-        Cyan,
-        Magenta,
-        Yellow,
-        Black
-    }
+    //internal enum Color
+    //{
+    //    Cyan,
+    //    Magenta,
+    //    Yellow,
+    //    Black
+    //}
 }

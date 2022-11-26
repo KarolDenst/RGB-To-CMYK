@@ -15,3 +15,4 @@ C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\refint\Graficzne3.dll
 C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\Graficzne3.pdb
 C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\Graficzne3.genruntimeconfig.cache
 C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\ref\Graficzne3.dll
+C:\Projects\Graficzne3\Graficzne3\obj\Debug\net6.0-windows\Graficzne3.Form2.resources

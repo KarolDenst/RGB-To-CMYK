@@ -39,7 +39,7 @@ namespace Graficzne3
         {
             int index = x + (y * Width);
             int col = Bits[index];
-            Color result = Color.FromArgb(col);
+            System.Drawing.Color result = System.Drawing.Color.FromArgb(col);
 
             return result;
         }
@@ -50,6 +50,45 @@ namespace Graficzne3
             Disposed = true;
             Bitmap.Dispose();
             BitsHandle.Free();
+        }
+
+        public void LoadImage(string path)
+        {
+            using (Bitmap bitmap = new Bitmap(path))
+            {
+                for (int i = 0; i < Width; i++)
+                {
+                    for (int j = 0; j < Height; j++)
+                    {
+                        SetPixel(i, j, bitmap.GetPixel(i, j));
+                    }
+                }
+            }
+        }
+
+        public void DrawColor(Color selectedColor, DirectBitmap bitmap, double[] colorValues)
+        {
+            int size = colorValues.Length;
+            int bitmapWidth = Math.Min(bitmap.Width, Width);
+            int bitmapHeight = Math.Min(bitmap.Height, Height);
+            
+            for(int i = 0; i < bitmapWidth; i++)
+            {
+                for (int j = 0; j < bitmapHeight; j++)
+                {
+                    Color color = bitmap.GetPixel(i, j);
+                    int value = Bezier.GetColorComponent(selectedColor, color);
+                    int index = value * (size - 1) / 255;
+                    double intensity = colorValues[index];
+
+                    int r = (int)(selectedColor.R * intensity);
+                    int g = (int)(selectedColor.G * intensity);
+                    int b = (int)(selectedColor.B * intensity);
+
+                    Color set2 = Color.FromArgb(255, r, g, b);
+                    SetPixel(i, j, set2);
+                }
+            }
         }
     }
 }

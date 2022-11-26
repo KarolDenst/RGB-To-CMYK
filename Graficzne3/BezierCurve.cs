@@ -10,14 +10,29 @@ namespace Graficzne3
     {
         public List<Point> Points;
         public Color Color;
-        public static int Padding = 5;
 
         public BezierCurve(Color color, int height)
         {
             Points = new List<Point>
             {
-                new Point(Padding, height - Padding)
+                new Point(0, height)
             };
+
+            Color = color;
+        }
+
+        public BezierCurve(Color color, string path)
+        {
+            Points = new List<Point>();
+
+            foreach(string line in File.ReadAllLines(path))
+            {
+                string[] xy = line.Split(' ');
+                int x = int.Parse(xy[0]);
+                int y = int.Parse(xy[1]);
+
+                Points.Add(new Point(x, y));
+            }
 
             Color = color;
         }
@@ -27,7 +42,7 @@ namespace Graficzne3
             if (Points.Count >= 4) return;
             if (Points.Count == 3)
             {
-                Point newPoint= new Point(width - Padding, p.Y);
+                Point newPoint= new Point(width, p.Y);
                 Points.Add(newPoint);
                 return;
             }
@@ -67,6 +82,51 @@ namespace Graficzne3
                     prev = p;
                 }
             }
+
+            foreach(Point p in Points)
+            {
+                Rectangle rectangle = new Rectangle(p.X - 7, p.Y - 1, 6, 6);
+                using (Pen pen = new Pen(Color)) g.DrawEllipse(pen, rectangle);
+            }
+        }
+
+        public void SaveCurve(string path)
+        {
+            StringBuilder stringBuilder= new StringBuilder();
+            foreach(Point point in Points)
+            {
+                stringBuilder.AppendLine(point.X.ToString() + " " + point.Y.ToString());
+            }
+            File.WriteAllText(path, stringBuilder.ToString());
+        }
+
+        public double[] GetGraph(int width, int height)
+        {
+            if (Points.Count < 4) return Array.Empty<double>();
+
+            double[] y = new double[width];
+
+            double i = 0.02;
+            Point prev = GetP(0.0);
+            Point current = GetP(0.01);
+
+            for(int x = 0; x < width; x++)
+            {
+                if(x > current.X)
+                {
+                    prev = current;
+                    current = GetP(i);
+                    i += 0.01;
+                }
+
+                double diff = -prev.X + current.X;
+                double d1 = (x - prev.X) / diff;
+                double d2 = (current.X - x) / diff;
+
+                y[x] = (height - (d2 * prev.Y + d1 * current.Y)) / height;
+            }
+
+            return y;
         }
     }
 }

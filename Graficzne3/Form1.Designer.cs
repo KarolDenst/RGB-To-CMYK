@@ -33,7 +33,7 @@
             this.curveSsplitContainer = new System.Windows.Forms.SplitContainer();
             this.saveAllPicturesButton = new System.Windows.Forms.Button();
             this.blackAndWhiteButton = new System.Windows.Forms.Button();
-            this.savePicturesButton = new System.Windows.Forms.Button();
+            this.showAllPicturesButton = new System.Windows.Forms.Button();
             this.changePictureButton = new System.Windows.Forms.Button();
             this.SaveCurveButton = new System.Windows.Forms.Button();
             this.loadCurveButton = new System.Windows.Forms.Button();
@@ -47,14 +47,8 @@
             this.magentaRadioButton = new System.Windows.Forms.RadioButton();
             this.cyanRadioButton = new System.Windows.Forms.RadioButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.cyanPictureBox = new System.Windows.Forms.PictureBox();
-            this.blackPictureBox = new System.Windows.Forms.PictureBox();
-            this.yellowPictureBox = new System.Windows.Forms.PictureBox();
-            this.magentaPictureBox = new System.Windows.Forms.PictureBox();
             this.mainPictureBox = new System.Windows.Forms.PictureBox();
+            this.colorPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.bezierCanvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
             this.mainSplitContainer.Panel1.SuspendLayout();
@@ -68,23 +62,8 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
-            this.splitContainer4.Panel1.SuspendLayout();
-            this.splitContainer4.Panel2.SuspendLayout();
-            this.splitContainer4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cyanPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.blackPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.magentaPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // bezierCanvas
@@ -92,10 +71,13 @@
             this.bezierCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bezierCanvas.Location = new System.Drawing.Point(0, 0);
             this.bezierCanvas.Name = "bezierCanvas";
-            this.bezierCanvas.Size = new System.Drawing.Size(575, 463);
+            this.bezierCanvas.Size = new System.Drawing.Size(681, 463);
             this.bezierCanvas.TabIndex = 0;
             this.bezierCanvas.TabStop = false;
             this.bezierCanvas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.bezierCanvas_MouseClick);
+            this.bezierCanvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bezierCanvas_MouseDown);
+            this.bezierCanvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.bezierCanvas_MouseMove);
+            this.bezierCanvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bezierCanvas_MouseUp);
             // 
             // mainSplitContainer
             // 
@@ -110,8 +92,8 @@
             // mainSplitContainer.Panel2
             // 
             this.mainSplitContainer.Panel2.Controls.Add(this.splitContainer1);
-            this.mainSplitContainer.Size = new System.Drawing.Size(1131, 628);
-            this.mainSplitContainer.SplitterDistance = 575;
+            this.mainSplitContainer.Size = new System.Drawing.Size(1341, 628);
+            this.mainSplitContainer.SplitterDistance = 681;
             this.mainSplitContainer.TabIndex = 1;
             // 
             // curveSsplitContainer
@@ -129,7 +111,7 @@
             // 
             this.curveSsplitContainer.Panel2.Controls.Add(this.saveAllPicturesButton);
             this.curveSsplitContainer.Panel2.Controls.Add(this.blackAndWhiteButton);
-            this.curveSsplitContainer.Panel2.Controls.Add(this.savePicturesButton);
+            this.curveSsplitContainer.Panel2.Controls.Add(this.showAllPicturesButton);
             this.curveSsplitContainer.Panel2.Controls.Add(this.changePictureButton);
             this.curveSsplitContainer.Panel2.Controls.Add(this.SaveCurveButton);
             this.curveSsplitContainer.Panel2.Controls.Add(this.loadCurveButton);
@@ -142,7 +124,7 @@
             this.curveSsplitContainer.Panel2.Controls.Add(this.yellowRadioButton);
             this.curveSsplitContainer.Panel2.Controls.Add(this.magentaRadioButton);
             this.curveSsplitContainer.Panel2.Controls.Add(this.cyanRadioButton);
-            this.curveSsplitContainer.Size = new System.Drawing.Size(575, 628);
+            this.curveSsplitContainer.Size = new System.Drawing.Size(681, 628);
             this.curveSsplitContainer.SplitterDistance = 463;
             this.curveSsplitContainer.TabIndex = 1;
             // 
@@ -164,14 +146,15 @@
             this.blackAndWhiteButton.Text = "Black and White";
             this.blackAndWhiteButton.UseVisualStyleBackColor = true;
             // 
-            // savePicturesButton
+            // showAllPicturesButton
             // 
-            this.savePicturesButton.Location = new System.Drawing.Point(297, 8);
-            this.savePicturesButton.Name = "savePicturesButton";
-            this.savePicturesButton.Size = new System.Drawing.Size(151, 29);
-            this.savePicturesButton.TabIndex = 12;
-            this.savePicturesButton.Text = "Save Pictures";
-            this.savePicturesButton.UseVisualStyleBackColor = true;
+            this.showAllPicturesButton.Location = new System.Drawing.Point(297, 8);
+            this.showAllPicturesButton.Name = "showAllPicturesButton";
+            this.showAllPicturesButton.Size = new System.Drawing.Size(151, 29);
+            this.showAllPicturesButton.TabIndex = 12;
+            this.showAllPicturesButton.Text = "Show All Pictures";
+            this.showAllPicturesButton.UseVisualStyleBackColor = true;
+            this.showAllPicturesButton.Click += new System.EventHandler(this.showAllPicturesButton_Click);
             // 
             // changePictureButton
             // 
@@ -181,6 +164,7 @@
             this.changePictureButton.TabIndex = 11;
             this.changePictureButton.Text = "Change Picture";
             this.changePictureButton.UseVisualStyleBackColor = true;
+            this.changePictureButton.Click += new System.EventHandler(this.changePictureButton_Click);
             // 
             // SaveCurveButton
             // 
@@ -190,6 +174,7 @@
             this.SaveCurveButton.TabIndex = 10;
             this.SaveCurveButton.Text = "Save Curve";
             this.SaveCurveButton.UseVisualStyleBackColor = true;
+            this.SaveCurveButton.Click += new System.EventHandler(this.SaveCurveButton_Click);
             // 
             // loadCurveButton
             // 
@@ -199,6 +184,7 @@
             this.loadCurveButton.TabIndex = 9;
             this.loadCurveButton.Text = "Load Curve";
             this.loadCurveButton.UseVisualStyleBackColor = true;
+            this.loadCurveButton.Click += new System.EventHandler(this.loadCurveButton_Click);
             // 
             // gcrButton
             // 
@@ -208,6 +194,7 @@
             this.gcrButton.TabIndex = 8;
             this.gcrButton.Text = "GCR";
             this.gcrButton.UseVisualStyleBackColor = true;
+            this.gcrButton.Click += new System.EventHandler(this.gcrButton_Click);
             // 
             // ucrButton
             // 
@@ -217,6 +204,7 @@
             this.ucrButton.TabIndex = 7;
             this.ucrButton.Text = "UCR";
             this.ucrButton.UseVisualStyleBackColor = true;
+            this.ucrButton.Click += new System.EventHandler(this.ucrButton_Click);
             // 
             // backtrack100Button
             // 
@@ -226,6 +214,7 @@
             this.backtrack100Button.TabIndex = 6;
             this.backtrack100Button.Text = "100% Backtrack";
             this.backtrack100Button.UseVisualStyleBackColor = true;
+            this.backtrack100Button.Click += new System.EventHandler(this.backtrack100Button_Click);
             // 
             // backtrack0Button
             // 
@@ -235,6 +224,7 @@
             this.backtrack0Button.TabIndex = 5;
             this.backtrack0Button.Text = "0% Backtrack";
             this.backtrack0Button.UseVisualStyleBackColor = true;
+            this.backtrack0Button.Click += new System.EventHandler(this.backtrack0Button_Click);
             // 
             // showAllCheckBox
             // 
@@ -250,12 +240,10 @@
             // blackRadioButton
             // 
             this.blackRadioButton.AutoSize = true;
-            this.blackRadioButton.Checked = true;
             this.blackRadioButton.Location = new System.Drawing.Point(8, 98);
             this.blackRadioButton.Name = "blackRadioButton";
             this.blackRadioButton.Size = new System.Drawing.Size(65, 24);
             this.blackRadioButton.TabIndex = 3;
-            this.blackRadioButton.TabStop = true;
             this.blackRadioButton.Text = "Black";
             this.blackRadioButton.UseVisualStyleBackColor = true;
             this.blackRadioButton.CheckedChanged += new System.EventHandler(this.blackRadioButton_CheckedChanged);
@@ -285,10 +273,12 @@
             // cyanRadioButton
             // 
             this.cyanRadioButton.AutoSize = true;
+            this.cyanRadioButton.Checked = true;
             this.cyanRadioButton.Location = new System.Drawing.Point(9, 8);
             this.cyanRadioButton.Name = "cyanRadioButton";
             this.cyanRadioButton.Size = new System.Drawing.Size(62, 24);
             this.cyanRadioButton.TabIndex = 0;
+            this.cyanRadioButton.TabStop = true;
             this.cyanRadioButton.Text = "Cyan";
             this.cyanRadioButton.UseVisualStyleBackColor = true;
             this.cyanRadioButton.CheckedChanged += new System.EventHandler(this.cyanRadioButton_CheckedChanged);
@@ -306,100 +296,10 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(552, 628);
-            this.splitContainer1.SplitterDistance = 258;
+            this.splitContainer1.Panel2.Controls.Add(this.colorPictureBox);
+            this.splitContainer1.Size = new System.Drawing.Size(656, 628);
+            this.splitContainer1.SplitterDistance = 308;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.splitContainer3);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer2.Size = new System.Drawing.Size(552, 366);
-            this.splitContainer2.SplitterDistance = 273;
-            this.splitContainer2.TabIndex = 0;
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.cyanPictureBox);
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer3.Panel2.Controls.Add(this.yellowPictureBox);
-            this.splitContainer3.Size = new System.Drawing.Size(273, 366);
-            this.splitContainer3.SplitterDistance = 180;
-            this.splitContainer3.TabIndex = 0;
-            // 
-            // splitContainer4
-            // 
-            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer4.Name = "splitContainer4";
-            this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer4.Panel1
-            // 
-            this.splitContainer4.Panel1.Controls.Add(this.magentaPictureBox);
-            // 
-            // splitContainer4.Panel2
-            // 
-            this.splitContainer4.Panel2.Controls.Add(this.blackPictureBox);
-            this.splitContainer4.Size = new System.Drawing.Size(275, 366);
-            this.splitContainer4.SplitterDistance = 179;
-            this.splitContainer4.TabIndex = 0;
-            // 
-            // cyanPictureBox
-            // 
-            this.cyanPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cyanPictureBox.Location = new System.Drawing.Point(0, 0);
-            this.cyanPictureBox.Name = "cyanPictureBox";
-            this.cyanPictureBox.Size = new System.Drawing.Size(273, 180);
-            this.cyanPictureBox.TabIndex = 0;
-            this.cyanPictureBox.TabStop = false;
-            // 
-            // blackPictureBox
-            // 
-            this.blackPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.blackPictureBox.Location = new System.Drawing.Point(0, 0);
-            this.blackPictureBox.Name = "blackPictureBox";
-            this.blackPictureBox.Size = new System.Drawing.Size(275, 183);
-            this.blackPictureBox.TabIndex = 1;
-            this.blackPictureBox.TabStop = false;
-            // 
-            // yellowPictureBox
-            // 
-            this.yellowPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.yellowPictureBox.Location = new System.Drawing.Point(0, 0);
-            this.yellowPictureBox.Name = "yellowPictureBox";
-            this.yellowPictureBox.Size = new System.Drawing.Size(273, 182);
-            this.yellowPictureBox.TabIndex = 2;
-            this.yellowPictureBox.TabStop = false;
-            // 
-            // magentaPictureBox
-            // 
-            this.magentaPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.magentaPictureBox.Location = new System.Drawing.Point(0, 0);
-            this.magentaPictureBox.Name = "magentaPictureBox";
-            this.magentaPictureBox.Size = new System.Drawing.Size(275, 179);
-            this.magentaPictureBox.TabIndex = 3;
-            this.magentaPictureBox.TabStop = false;
             // 
             // mainPictureBox
             // 
@@ -407,15 +307,24 @@
             this.mainPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPictureBox.Location = new System.Drawing.Point(0, 0);
             this.mainPictureBox.Name = "mainPictureBox";
-            this.mainPictureBox.Size = new System.Drawing.Size(552, 258);
+            this.mainPictureBox.Size = new System.Drawing.Size(656, 308);
             this.mainPictureBox.TabIndex = 0;
             this.mainPictureBox.TabStop = false;
+            // 
+            // colorPictureBox
+            // 
+            this.colorPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.colorPictureBox.Location = new System.Drawing.Point(0, 0);
+            this.colorPictureBox.Name = "colorPictureBox";
+            this.colorPictureBox.Size = new System.Drawing.Size(656, 316);
+            this.colorPictureBox.TabIndex = 0;
+            this.colorPictureBox.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1131, 628);
+            this.ClientSize = new System.Drawing.Size(1341, 628);
             this.Controls.Add(this.mainSplitContainer);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -433,23 +342,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
-            this.splitContainer4.Panel1.ResumeLayout(false);
-            this.splitContainer4.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
-            this.splitContainer4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cyanPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.blackPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yellowPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.magentaPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -461,7 +355,7 @@
         private SplitContainer curveSsplitContainer;
         private Button saveAllPicturesButton;
         private Button blackAndWhiteButton;
-        private Button savePicturesButton;
+        private Button showAllPicturesButton;
         private Button changePictureButton;
         private Button SaveCurveButton;
         private Button loadCurveButton;
@@ -475,13 +369,7 @@
         private RadioButton magentaRadioButton;
         private RadioButton cyanRadioButton;
         private SplitContainer splitContainer1;
-        private SplitContainer splitContainer2;
-        private SplitContainer splitContainer3;
-        private SplitContainer splitContainer4;
         private PictureBox mainPictureBox;
-        private PictureBox cyanPictureBox;
-        private PictureBox yellowPictureBox;
-        private PictureBox magentaPictureBox;
-        private PictureBox blackPictureBox;
+        private PictureBox colorPictureBox;
     }
 }
