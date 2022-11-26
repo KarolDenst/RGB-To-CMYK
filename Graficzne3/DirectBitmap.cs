@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Graficzne3
 {
-    public class DirectBitmap : IDisposable
+    internal class DirectBitmap : IDisposable
     {
         public Bitmap Bitmap { get; private set; }
         public Int32[] Bits { get; private set; }
@@ -66,9 +66,9 @@ namespace Graficzne3
             }
         }
 
-        public void DrawColor(Color selectedColor, DirectBitmap bitmap, double[] colorValues)
+        public void DrawColor(Color selectedColor, DirectBitmap bitmap, Bezier bezier)
         {
-            int size = colorValues.Length;
+            bezier.UpdateValues();
             int bitmapWidth = Math.Min(bitmap.Width, Width);
             int bitmapHeight = Math.Min(bitmap.Height, Height);
             
@@ -77,16 +77,9 @@ namespace Graficzne3
                 for (int j = 0; j < bitmapHeight; j++)
                 {
                     Color color = bitmap.GetPixel(i, j);
-                    int value = Bezier.GetColorComponent(selectedColor, color);
-                    int index = value * (size - 1) / 255;
-                    double intensity = colorValues[index];
 
-                    int r = (int)(selectedColor.R * intensity);
-                    int g = (int)(selectedColor.G * intensity);
-                    int b = (int)(selectedColor.B * intensity);
-
-                    Color set2 = Color.FromArgb(255, r, g, b);
-                    SetPixel(i, j, set2);
+                    Color set = bezier.GetColor(color, selectedColor); // Change this
+                    SetPixel(i, j, set);
                 }
             }
         }

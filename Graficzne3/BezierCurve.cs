@@ -102,7 +102,7 @@ namespace Graficzne3
 
         public double[] GetGraph(int width, int height)
         {
-            if (Points.Count < 4) return Array.Empty<double>();
+            if (Points.Count < 4) return new double[width];
 
             double[] y = new double[width];
 
@@ -127,6 +127,50 @@ namespace Graficzne3
             }
 
             return y;
+        }
+
+        public void SetFull(int width, int height)
+        {
+            Points = new List<Point>
+            {
+                new Point(0, height),
+                new Point((int)( 1 / 3.0 * width), (int)( 2 / 3.0 * height)),
+                new Point((int)( 2 / 3.0 * width), (int)( 1 / 3.0 * height)),
+                new Point((int)( 3 / 3.0 * width), 0)
+            };
+        }
+
+        public void SetZero(int width, int height)
+        {
+            Points = new List<Point>
+            {
+                new Point(0, height),
+                new Point((int)( 1 / 3.0 * width), height),
+                new Point((int)( 2 / 3.0 * width), height),
+                new Point((int)( 3 / 3.0 * width), height),
+            };
+        }
+
+        public void SetUCR(int width, int height)
+        {
+            Points = new List<Point>
+            {
+                new Point(0, height),
+                new Point((int)( 5 / 8.0 * width), height),
+                new Point((int)( 7 / 8.0 * width), (int)(1 / 2.0 * height)),
+                new Point((int)( 3 / 3.0 * width), 0),
+            };
+        }
+
+        public void SetGCR(int width, int height)
+        {
+            Points = new List<Point>
+            {
+                new Point(0, height),
+                new Point((int)( 2 / 4.0 * width), height),
+                new Point((int)( 3.9 / 4.0 * width), (int)( 3.9 / 4.0 * height)),
+                new Point((int)( 3 / 3.0 * width), 0),
+            };
         }
     }
 }

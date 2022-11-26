@@ -136,6 +136,7 @@
             this.saveAllPicturesButton.TabIndex = 14;
             this.saveAllPicturesButton.Text = "Save All Pictures";
             this.saveAllPicturesButton.UseVisualStyleBackColor = true;
+            this.saveAllPicturesButton.Click += new System.EventHandler(this.saveAllPicturesButton_Click);
             // 
             // blackAndWhiteButton
             // 

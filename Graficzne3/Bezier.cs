@@ -10,8 +10,9 @@ namespace Graficzne3
     internal class Bezier
     {
         public Dictionary<Color, BezierCurve> BezierCurves;
-        private int Height;
-        private int Width;
+        public Dictionary<Color, double[]> Values;
+        public int Height;
+        public int Width;
 
         public Bezier(int height, int width)
         {
@@ -20,6 +21,7 @@ namespace Graficzne3
                 { Color.Cyan, new BezierCurve(Color.Cyan, height) },
                 { Color.Magenta, new BezierCurve(Color.Magenta, height) },
                 { Color.Yellow, new BezierCurve(Color.Yellow, height) },
+                { Color.Black, new BezierCurve(Color.Black, height) },
             };
             Height = height;
             Width = width;
@@ -30,53 +32,18 @@ namespace Graficzne3
             BezierCurves[color].Draw(graphics);
         }
 
-        public void DrawAll(Graphics graphics, Bitmap bitmap, BlackMode blackMode)
+        public void DrawAll(Graphics graphics)
         {
             foreach (var curve in BezierCurves.Values)
             {
                 curve.Draw(graphics);
             }
-            DrawBlack(bitmap, blackMode);
         }
 
         public BezierCurve this[Color color]
         {
             get => BezierCurves[color];
             set => BezierCurves[color] = value;
-        }
-
-        public void DrawBlack(Bitmap bitmap, BlackMode blackMode)
-        {
-            double[] y = GetBlack(blackMode);
-
-            for(int x = 0; x < y.Length; x++)
-            {
-                bitmap.SetPixel(x, bitmap.Height - (int)y[x] - 1, Color.Black);
-            }
-        }
-
-        public double[] GetBlack(BlackMode blackMode)
-        {
-            switch (blackMode)
-            {
-                case BlackMode.Zero:
-                    return new double[Width];
-                case BlackMode.Full:
-                    return GetFullBlack();
-                default: return new double[Width]; // CHange
-
-            }
-        }
-
-        public double[] GetFullBlack()
-        {
-            double[] y = new double[Width];
-            for(int x = 0; x < Width; x++)
-            {
-                y[x] = x * (double)Height / Width;
-            }
-
-            return y;
         }
 
         public static int GetColorComponent(Color color, Color source)
@@ -95,9 +62,9 @@ namespace Graficzne3
 
         public (Color, int) SelectPoint(Point click)
         {
-            foreach(BezierCurve curve in BezierCurves.Values)
+            foreach (BezierCurve curve in BezierCurves.Values)
             {
-                for(int i = 0; i < curve.Points.Count; i++)
+                for (int i = 0; i < curve.Points.Count; i++)
                 {
                     if (Utils.GetDistance(curve.Points[i], click) < Constants.PointDistance)
                     {
@@ -112,6 +79,55 @@ namespace Graficzne3
         public void MovePoint(Point point, Color color, int index)
         {
             BezierCurves[color].Points[index] = point;
+        }
+
+        public void UpdateValues()
+        {
+            Values = new Dictionary<Color, double[]>
+            {
+                { Color.Cyan, GetValues(Color.Cyan) },
+                { Color.Magenta, GetValues(Color.Magenta) },
+                { Color.Yellow, GetValues(Color.Yellow) },
+                { Color.Black, GetValues(Color.Black) }
+            };
+        }
+
+        public (double Cyan, double Magenta, double Yellow, double Black) GetCMYK(Color color)
+        {
+            double cyan = 1 - color.R / 255.0;
+            double magenta = 1 - color.G / 255.0;
+            double yellow = 1 - color.B / 255.0;
+            double black = new[] { cyan, magenta, yellow }.Min();
+
+            cyan = cyan - black + Values[Color.Cyan][(int)(black * Width)];
+            cyan = Math.Min(cyan, 1);
+            magenta = magenta - black + Values[Color.Magenta][(int)(black * Width)];
+            magenta = Math.Min(magenta, 1);
+            yellow = yellow - black + Values[Color.Yellow][(int)(black * Width)];
+            yellow = Math.Min(yellow, 1);
+            black = Values[Color.Black][(int)(black * Width)];
+            black = Math.Min(black, 1);
+
+            return (cyan, magenta, yellow, black);
+        }
+
+        public Color GetColor(Color color, Color selectedColor)
+        {
+            var intensities = GetCMYK(color);
+
+            if(selectedColor == Color.Cyan) return ToRGB(intensities.Cyan, 0, 0, intensities.Black);
+            if (selectedColor == Color.Magenta) return ToRGB(0, intensities.Magenta, 0, intensities.Black);
+            if (selectedColor == Color.Yellow) return ToRGB(0, 0, intensities.Yellow, intensities.Black);
+            return ToRGB(0, 0, 0, intensities.Black);
+        }
+
+        public Color ToRGB(double cyan, double magenta, double yellow, double black)
+        {
+            int r = (int)(255 * (1 - cyan) * (1 - black));
+            int g = (int)(255 * (1 - magenta) * (1 - black));
+            int b = (int)(255 * (1 - yellow) * (1 - black));
+
+            return Color.FromArgb(r, g, b);
         }
     }
 }

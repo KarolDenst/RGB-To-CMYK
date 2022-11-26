@@ -5,6 +5,7 @@
         public static string CurvesLocation = @"..\..\..\..\Curves";
         public static string PicturesLocation = @"..\..\..\..\Pictures";
         public static string DefaultPictureLocation = @"..\..\..\..\Pictures\Creation_of_Adam.jpg";
+        public static string CMYKPicturesLocation = @"..\..\..\..\CMYK Pictures";
         public static string CurveFormat = ".crv";
 
         public static int NumberOfPoints = 4;

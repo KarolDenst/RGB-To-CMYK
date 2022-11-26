@@ -11,7 +11,6 @@ namespace Graficzne3
         private DirectBitmap mainBitmap;
         private DirectBitmap colorBitmap;
 
-        private BlackMode blackMode = BlackMode.Full;
         private (Color, int) selectedPoint = (Color.White, -1);
 
         public Form1()
@@ -48,8 +47,7 @@ namespace Graficzne3
 
         private void DrawColorPicture(Color color)
         {
-            var values = bezier.GetValues(color);
-            colorBitmap.DrawColor(color, mainBitmap, values);
+            colorBitmap.DrawColor(color, mainBitmap, bezier);
             colorPictureBox.Refresh();
         }
 
@@ -76,8 +74,7 @@ namespace Graficzne3
             else
             {
                 Color color = GetSelectedColor();
-                if (color == Color.Black) bezier.DrawBlack(bitmap, blackMode);
-                else bezier.Draw(color, graphics);
+                bezier.Draw(color, graphics);
             }
 
             bezierCanvas.Refresh();
@@ -87,14 +84,13 @@ namespace Graficzne3
         {
             graphics.Clear(Constants.CanvasBackground);
 
-            bezier.DrawAll(graphics, bitmap, blackMode);
+            bezier.DrawAll(graphics);
 
             bezierCanvas.Refresh();
         }
 
         private void bezierCanvas_MouseClick(object sender, MouseEventArgs e)
         {
-            if (GetSelectedColor() == Color.Black) return;
             bezier[GetSelectedColor()].AddPoint(e.Location, bezierCanvas.Width);
             Draw();
         }
@@ -166,27 +162,42 @@ namespace Graficzne3
             }
         }
 
+        private void saveAllPicturesButton_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.tif";
+                saveFileDialog.Title = "Save pictures";
+                saveFileDialog.InitialDirectory = Path.GetFullPath(Constants.CMYKPicturesLocation);
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    Utils.SaveBitmaps(bezier, mainBitmap, saveFileDialog.FileName);
+                }
+            }
+        }
+
         private void backtrack0Button_Click(object sender, EventArgs e)
         {
-            blackMode = BlackMode.Zero;
+            bezier.BezierCurves[Color.Black].SetZero(bezier.Width, bezier.Height);
             Draw();
         }
 
         private void backtrack100Button_Click(object sender, EventArgs e)
         {
-            blackMode = BlackMode.Full;
+            bezier.BezierCurves[Color.Black].SetFull(bezier.Width, bezier.Height);
             Draw();
         }
 
         private void ucrButton_Click(object sender, EventArgs e)
         {
-            blackMode = BlackMode.UCR;
+            bezier.BezierCurves[Color.Black].SetUCR(bezier.Width, bezier.Height);
             Draw();
         }
 
         private void gcrButton_Click(object sender, EventArgs e)
         {
-            blackMode= BlackMode.GCR;
+            bezier.BezierCurves[Color.Black].SetGCR(bezier.Width, bezier.Height);
             Draw();
         }
 

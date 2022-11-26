@@ -20,11 +20,11 @@ namespace Graficzne3
 
         private void SetUpImages(Bezier bezier, DirectBitmap mainBitmap)
         {
-            var cyanBitmap = new DirectBitmap(cyanCanvas.Height, cyanCanvas.Width);
+            var cyanBitmap = new DirectBitmap(cyanCanvas.Width, cyanCanvas.Height);
             cyanCanvas.Image = cyanBitmap.Bitmap;
             DrawColorPicture(Color.Cyan, bezier, mainBitmap, cyanBitmap, cyanCanvas);
 
-            var magentaBItmap = new DirectBitmap(magentaCanvas.Height, magentaCanvas.Width);
+            var magentaBItmap = new DirectBitmap(magentaCanvas.Width, magentaCanvas.Height);
             magentaCanvas.Image = magentaBItmap.Bitmap;
             DrawColorPicture(Color.Magenta, bezier, mainBitmap, magentaBItmap, cyanCanvas);
 
@@ -42,7 +42,7 @@ namespace Graficzne3
             try
             {
                 var values = bezier.GetValues(color);
-                colorBitmap.DrawColor(color, mainBitmap, values);
+                colorBitmap.DrawColor(color, mainBitmap, bezier);
             }
             catch
             {
