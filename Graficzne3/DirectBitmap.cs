@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Imaging;
-using System.Linq;
+﻿using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Graficzne3
 {
@@ -66,7 +61,7 @@ namespace Graficzne3
             }
         }
 
-        public void DrawColor(Color selectedColor, DirectBitmap bitmap, Bezier bezier)
+        public void DrawColor(Color selectedColor, DirectBitmap bitmap, CMYK bezier)
         {
             bezier.UpdateValues();
             int bitmapWidth = Math.Min(bitmap.Width, Width);
