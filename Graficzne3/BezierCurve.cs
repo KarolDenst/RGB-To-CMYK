@@ -92,7 +92,7 @@ namespace Graficzne3
             StringBuilder stringBuilder= new StringBuilder();
             foreach(Point point in Points)
             {
-                stringBuilder.AppendLine(point.X.ToString() + " " + point.Y.ToString());
+                stringBuilder.AppendLine(point.X.ToString(CultureInfo.InvariantCulture) + " " + point.Y.ToString(CultureInfo.InvariantCulture));
             }
             File.WriteAllText(path, stringBuilder.ToString());
         }
