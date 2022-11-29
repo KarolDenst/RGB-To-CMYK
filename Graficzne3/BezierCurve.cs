@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 
 namespace Graficzne3
 {
@@ -24,8 +25,8 @@ namespace Graficzne3
             foreach(string line in File.ReadAllLines(path))
             {
                 string[] xy = line.Split(' ');
-                int x = int.Parse(xy[0]);
-                int y = int.Parse(xy[1]);
+                int x = int.Parse(xy[0], CultureInfo.InvariantCulture);
+                int y = int.Parse(xy[1], CultureInfo.InvariantCulture);
 
                 Points.Add(new Point(x, y));
             }
