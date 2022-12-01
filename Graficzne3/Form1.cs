@@ -179,25 +179,25 @@ namespace Graficzne3
 
         private void backtrack0Button_Click(object sender, EventArgs e)
         {
-            bezier.BezierCurves[Color.Black].SetZero(bezier.Width, bezier.Height);
+            bezier.SetUp0Backtrack();
             Draw();
         }
 
         private void backtrack100Button_Click(object sender, EventArgs e)
         {
-            bezier.BezierCurves[Color.Black].SetFull(bezier.Width, bezier.Height);
+            bezier.SetUp100Backtrack();
             Draw();
         }
 
         private void ucrButton_Click(object sender, EventArgs e)
         {
-            bezier.BezierCurves[Color.Black].SetUCR(bezier.Width, bezier.Height);
+            bezier.SetUpUCR();
             Draw();
         }
 
         private void gcrButton_Click(object sender, EventArgs e)
         {
-            bezier.BezierCurves[Color.Black].SetGCR(bezier.Width, bezier.Height);
+            bezier.SetUpGCR();
             Draw();
         }
 

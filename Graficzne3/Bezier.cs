@@ -129,5 +129,145 @@ namespace Graficzne3
 
             return Color.FromArgb(r, g, b);
         }
+
+        public void SetUp0Backtrack()
+        {
+            BezierCurves[Color.Cyan].Points = new List<Point>
+            {
+                new Point(0, Height),
+                new Point((int)( 1 / 3.0 * Width), (int)(1.8 / 3.0 * Height)),
+                new Point((int)( 2 / 3.0 * Width), (int)(0.8/ 3.0 * Height)),
+                new Point((int)( 3 / 3.0 * Width), (int)(0 / 3.0 * Height)),
+            };
+
+            BezierCurves[Color.Magenta].Points = new List<Point>
+            {
+                new Point(0, Height),
+                new Point((int)( 1 / 3.0 * Width), (int)(2 / 3.0 * Height)),
+                new Point((int)( 2 / 3.0 * Width), (int)(1/ 3.0 * Height)),
+                new Point((int)( 3 / 3.0 * Width), (int)(0 / 3.0 * Height)),
+            };
+
+            BezierCurves[Color.Yellow].Points = new List<Point>
+            {
+                new Point(0, Height),
+                new Point((int)( 1 / 3.0 * Width), (int)(1.9 / 3.0 * Height)),
+                new Point((int)( 2 / 3.0 * Width), (int)(0.9/ 3.0 * Height)),
+                new Point((int)( 3 / 3.0 * Width), (int)(0 / 3.0 * Height)),
+            };
+
+            BezierCurves[Color.Black].Points = new List<Point>
+            {
+                new Point(0, Height),
+                new Point((int)( 1 / 3.0 * Width), Height),
+                new Point((int)( 2 / 3.0 * Width), Height),
+                new Point((int)( 3 / 3.0 * Width), Height),
+            };
+        }
+
+        public void SetUp100Backtrack()
+        {
+            BezierCurves[Color.Cyan].Points = new List<Point>
+            {
+                new Point(0, Height),
+                new Point((int)( 1 / 3.0 * Width), Height),
+                new Point((int)( 2 / 3.0 * Width), Height),
+                new Point((int)( 3 / 3.0 * Width), Height),
+            };
+
+            BezierCurves[Color.Magenta].Points = new List<Point>
+            {
+                new Point(0, Height),
+                new Point((int)( 1 / 3.0 * Width), Height),
+                new Point((int)( 2 / 3.0 * Width), Height),
+                new Point((int)( 3 / 3.0 * Width), Height),
+            };
+
+            BezierCurves[Color.Yellow].Points = new List<Point>
+            {
+                new Point(0, Height),
+                new Point((int)( 1 / 3.0 * Width), Height),
+                new Point((int)( 2 / 3.0 * Width), Height),
+                new Point((int)( 3 / 3.0 * Width), Height),
+            };
+
+            BezierCurves[Color.Black].Points = new List<Point>
+            {
+                new Point(0, Height),
+                new Point((int)( 1 / 3.0 * Width), (int)(2 / 3.0 * Height)),
+                new Point((int)( 2 / 3.0 * Width), (int)(1/ 3.0 * Height)),
+                new Point((int)( 3 / 3.0 * Width), (int)(0 / 3.0 * Height)),
+            };
+        }
+
+        public void SetUpUCR()
+        {
+            BezierCurves[Color.Cyan].Points = new List<Point>
+            {
+                new Point(0, Height),
+                new Point((int)( 1 / 3.0 * Width), (int)(1.8 / 3.0 * Height)),
+                new Point((int)( 2 / 3.0 * Width), (int)(0.1/ 3.0 * Height)),
+                new Point((int)( 3 / 3.0 * Width), (int)(0.4 / 3.0 * Height)),
+            };
+
+            BezierCurves[Color.Magenta].Points = new List<Point>
+            {
+                new Point(0, Height),
+                new Point((int)( 1 / 3.0 * Width), (int)(2 / 3.0 * Height)),
+                new Point((int)( 2 / 3.0 * Width), (int)(0.2/ 3.0 * Height)),
+                new Point((int)( 3 / 3.0 * Width), (int)(0.5 / 3.0 * Height)),
+            };
+
+            BezierCurves[Color.Yellow].Points = new List<Point>
+            {
+                new Point(0, Height),
+                new Point((int)( 1 / 3.0 * Width), (int)(1.9 / 3.0 * Height)),
+                new Point((int)( 2 / 3.0 * Width), (int)(0.1/ 3.0 * Height)),
+                new Point((int)( 3 / 3.0 * Width), (int)(0.6 / 3.0 * Height)),
+            };
+
+            BezierCurves[Color.Black].Points = new List<Point>
+            {
+                new Point(0, Height),
+                new Point((int)( 5 / 8.0 * Width), Height),
+                new Point((int)( 7 / 8.0 * Width), (int)(1 / 2.0 * Height)),
+                new Point((int)( 3 / 3.0 * Width), 0),
+            };
+        }
+
+        public void SetUpGCR()
+        {
+            BezierCurves[Color.Cyan].Points = new List<Point>
+            {
+                new Point(0, Height),
+                new Point((int)( 1 / 3.0 * Width), (int)(1.8 / 3.0 * Height)),
+                new Point((int)( 2 / 3.0 * Width), (int)(0.8/ 3.0 * Height)),
+                new Point((int)( 3 / 3.0 * Width), (int)(0.4 / 3.0 * Height)),
+            };
+
+            BezierCurves[Color.Magenta].Points = new List<Point>
+            {
+                new Point(0, Height),
+                new Point((int)( 1 / 3.0 * Width), (int)(2 / 3.0 * Height)),
+                new Point((int)( 2 / 3.0 * Width), (int)(1/ 3.0 * Height)),
+                new Point((int)( 3 / 3.0 * Width), (int)(0.5 / 3.0 * Height)),
+            };
+
+            BezierCurves[Color.Yellow].Points = new List<Point>
+            {
+                new Point(0, Height),
+                new Point((int)( 1 / 3.0 * Width), (int)(1.9 / 3.0 * Height)),
+                new Point((int)( 2 / 3.0 * Width), (int)(0.9/ 3.0 * Height)),
+                new Point((int)( 3 / 3.0 * Width), (int)(0.6 / 3.0 * Height)),
+            };
+
+            BezierCurves[Color.Black].Points = new List<Point>
+            {
+                 new Point(0, Height),
+                new Point((int)( 2 / 4.0 * Width), Height),
+                new Point((int)( 3.9 / 4.0 * Width), (int)( 3.9 / 4.0 * Height)),
+                new Point((int)( 3 / 3.0 * Width), 0),
+            };
+        }
     }
 }
