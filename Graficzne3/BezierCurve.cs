@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Globalization;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Graficzne3
 {
@@ -28,8 +25,8 @@ namespace Graficzne3
             foreach(string line in File.ReadAllLines(path))
             {
                 string[] xy = line.Split(' ');
-                int x = int.Parse(xy[0]);
-                int y = int.Parse(xy[1]);
+                int x = int.Parse(xy[0], CultureInfo.InvariantCulture);
+                int y = int.Parse(xy[1], CultureInfo.InvariantCulture);
 
                 Points.Add(new Point(x, y));
             }
@@ -95,7 +92,7 @@ namespace Graficzne3
             StringBuilder stringBuilder= new StringBuilder();
             foreach(Point point in Points)
             {
-                stringBuilder.AppendLine(point.X.ToString() + " " + point.Y.ToString());
+                stringBuilder.AppendLine(point.X.ToString(CultureInfo.InvariantCulture) + " " + point.Y.ToString(CultureInfo.InvariantCulture));
             }
             File.WriteAllText(path, stringBuilder.ToString());
         }

@@ -328,7 +328,7 @@
             this.ClientSize = new System.Drawing.Size(1341, 628);
             this.Controls.Add(this.mainSplitContainer);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "CMYK";
             ((System.ComponentModel.ISupportInitialize)(this.bezierCanvas)).EndInit();
             this.mainSplitContainer.Panel1.ResumeLayout(false);
             this.mainSplitContainer.Panel2.ResumeLayout(false);

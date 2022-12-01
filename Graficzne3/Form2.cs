@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Graficzne3
+﻿namespace Graficzne3
 {
     internal partial class Form2 : Form
     {
-        internal Form2(Bezier bezier, DirectBitmap mainBitmap)
+        internal Form2(CMYK bezier, DirectBitmap mainBitmap)
         {
             InitializeComponent();
             SetUpImages(bezier, mainBitmap);
         }
 
-        private void SetUpImages(Bezier bezier, DirectBitmap mainBitmap)
+        private void SetUpImages(CMYK bezier, DirectBitmap mainBitmap)
         {
             var cyanBitmap = new DirectBitmap(cyanCanvas.Width, cyanCanvas.Height);
             cyanCanvas.Image = cyanBitmap.Bitmap;
@@ -37,7 +27,7 @@ namespace Graficzne3
             DrawColorPicture(Color.Black, bezier, mainBitmap, blackBitmap, blackCanvas);
         }
 
-        private void DrawColorPicture(Color color, Bezier bezier, DirectBitmap mainBitmap, DirectBitmap colorBitmap, PictureBox colorPictureBox)
+        private void DrawColorPicture(Color color, CMYK bezier, DirectBitmap mainBitmap, DirectBitmap colorBitmap, PictureBox colorPictureBox)
         {
             try
             {

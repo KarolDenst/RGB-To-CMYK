@@ -1,11 +1,8 @@
-using System.Drawing;
-using System.Windows.Forms;
-
 namespace Graficzne3
 {
     public partial class Form1 : Form
     {
-        private Bezier bezier;
+        private CMYK bezier;
         private Graphics graphics;
         private Bitmap bitmap;
         private DirectBitmap mainBitmap;
@@ -31,7 +28,7 @@ namespace Graficzne3
 
         private void SetUpBezierCurves()
         {
-            bezier = new Bezier(bezierCanvas.Height, bezierCanvas.Width);
+            bezier = new CMYK(bezierCanvas.Height, bezierCanvas.Width);
         }
 
         private void SetUpBitmaps()
