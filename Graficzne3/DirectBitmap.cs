@@ -78,5 +78,62 @@ namespace Graficzne3
                 }
             }
         }
+
+        public void Clear(Color color)
+        {
+            for(int x = 0; x < Width; x++)
+            {
+                for(int y = 0; y < Height; y++)
+                {
+                    SetPixel(x, y, color);
+                }
+            }
+        }
+
+        public void DrawSquare(Color color)
+        {
+            using(Graphics g = Graphics.FromImage(Bitmap))
+            {
+                using(Pen pen = new Pen(color))
+                {
+                    Rectangle rectangle = new Rectangle(5, 5, Width - 10, Height - 10);
+                    g.DrawRectangle(pen, rectangle);
+                }
+            }
+        }
+
+        public void DrawBar(int x, int y, int width, int height, double s, double v)
+        {
+            for (int i = y; i < y + height; i++)
+            {
+                int h = (int)((i - y) / (double)height * 255);
+                for (int j = x; j < x + width; j++)
+                {
+                    Color color = Utils.HsvToRgb(h, s, v);
+                    SetPixel(j, i, color);
+                }
+            }
+        }
+
+        public void Generate(double v)
+        {
+            Clear(Color.White);
+            //int height = Height - 10;
+            int width = Width - 10;
+
+            int numberOfBars = 16;
+            for(int i = 0; i < numberOfBars; i++)
+            {
+                int start = width * i / (numberOfBars) + 3;
+                int end = width * (i + 1) / (numberOfBars) - 3;
+                double s = i / (double)numberOfBars;
+
+                DrawBar(start + 5, 8, end - start, Height - 13, s, v);
+            }
+
+            DrawSquare(Color.Black);
+
+
+        }
     }
 }

@@ -222,5 +222,21 @@ namespace Graficzne3
                 Draw();
             }
         }
+
+        private void generateButton_Click(object sender, EventArgs e)
+        {
+            double v = vTrackBar.Value / 10.0;
+            mainBitmap.Generate(v);
+            mainPictureBox.Refresh();
+            Draw();
+        }
+
+        private void vTrackBar_Scroll(object sender, EventArgs e)
+        {
+            double v = vTrackBar.Value / 10.0;
+            mainBitmap.Generate(v);
+            mainPictureBox.Refresh();
+            Draw();
+        }
     }
 }

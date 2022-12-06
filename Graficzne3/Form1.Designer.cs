@@ -31,6 +31,9 @@
             this.bezierCanvas = new System.Windows.Forms.PictureBox();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.curveSsplitContainer = new System.Windows.Forms.SplitContainer();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.vTrackBar = new System.Windows.Forms.TrackBar();
+            this.generateButton = new System.Windows.Forms.Button();
             this.saveAllPicturesButton = new System.Windows.Forms.Button();
             this.blackAndWhiteButton = new System.Windows.Forms.Button();
             this.showAllPicturesButton = new System.Windows.Forms.Button();
@@ -58,6 +61,7 @@
             this.curveSsplitContainer.Panel1.SuspendLayout();
             this.curveSsplitContainer.Panel2.SuspendLayout();
             this.curveSsplitContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -109,6 +113,9 @@
             // 
             // curveSsplitContainer.Panel2
             // 
+            this.curveSsplitContainer.Panel2.Controls.Add(this.textBox1);
+            this.curveSsplitContainer.Panel2.Controls.Add(this.vTrackBar);
+            this.curveSsplitContainer.Panel2.Controls.Add(this.generateButton);
             this.curveSsplitContainer.Panel2.Controls.Add(this.saveAllPicturesButton);
             this.curveSsplitContainer.Panel2.Controls.Add(this.blackAndWhiteButton);
             this.curveSsplitContainer.Panel2.Controls.Add(this.showAllPicturesButton);
@@ -127,6 +134,33 @@
             this.curveSsplitContainer.Size = new System.Drawing.Size(681, 628);
             this.curveSsplitContainer.SplitterDistance = 463;
             this.curveSsplitContainer.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(603, 122);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(24, 27);
+            this.textBox1.TabIndex = 17;
+            this.textBox1.Text = "V";
+            // 
+            // vTrackBar
+            // 
+            this.vTrackBar.Location = new System.Drawing.Point(554, 86);
+            this.vTrackBar.Name = "vTrackBar";
+            this.vTrackBar.Size = new System.Drawing.Size(124, 56);
+            this.vTrackBar.TabIndex = 16;
+            this.vTrackBar.Scroll += new System.EventHandler(this.vTrackBar_Scroll);
+            // 
+            // generateButton
+            // 
+            this.generateButton.Location = new System.Drawing.Point(554, 8);
+            this.generateButton.Name = "generateButton";
+            this.generateButton.Size = new System.Drawing.Size(94, 69);
+            this.generateButton.TabIndex = 15;
+            this.generateButton.Text = "Generate";
+            this.generateButton.UseVisualStyleBackColor = true;
+            this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
             // 
             // saveAllPicturesButton
             // 
@@ -339,6 +373,7 @@
             this.curveSsplitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.curveSsplitContainer)).EndInit();
             this.curveSsplitContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.vTrackBar)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -372,5 +407,8 @@
         private SplitContainer splitContainer1;
         private PictureBox mainPictureBox;
         private PictureBox colorPictureBox;
+        private TextBox textBox1;
+        private TrackBar vTrackBar;
+        private Button generateButton;
     }
 }

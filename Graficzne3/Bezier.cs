@@ -92,13 +92,14 @@
             double yellow = 1 - color.B / 255.0;
             double black = new[] { cyan, magenta, yellow }.Min();
 
-            cyan = cyan - black + Values[Color.Cyan][(int)(black * Width)];
+            int index = Math.Min((int)(black * Width), Values[Color.Black].Length - 1);
+            cyan = cyan - black + Values[Color.Cyan][index];
             cyan = Math.Min(cyan, 1);
-            magenta = magenta - black + Values[Color.Magenta][(int)(black * Width)];
+            magenta = magenta - black + Values[Color.Magenta][index];
             magenta = Math.Min(magenta, 1);
-            yellow = yellow - black + Values[Color.Yellow][(int)(black * Width)];
+            yellow = yellow - black + Values[Color.Yellow][index];
             yellow = Math.Min(yellow, 1);
-            black = Values[Color.Black][(int)(black * Width)];
+            black = Values[Color.Black][index];
             black = Math.Min(black, 1);
 
             return (cyan, magenta, yellow, black);
